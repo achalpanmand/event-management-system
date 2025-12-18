@@ -1,0 +1,14 @@
+{% extends 'events/ticket.html' %}
+{% block content %}
+<div class="card">
+  <div class="card-body">
+    <h4>Ticket confirmed</h4>
+    <p><strong>Event:</strong> {{ event.title }}</p>
+    <p><strong>Name:</strong> {{ registration.name }}</p>
+    <p><strong>Email:</strong> {{ registration.email }}</p>
+    <p><strong>Ticket code:</strong> {{ registration.ticket_code }}</p>
+    <p>We’ve emailed your ticket code. Keep this for entry.</p>
+    <a href="/" class="btn btn-secondary">Back to events</a>
+  </div>
+</div>
+{% endblock %}

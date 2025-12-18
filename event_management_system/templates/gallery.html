@@ -1,0 +1,18 @@
+{% extends 'events/gallery.html' %}
+{% block content %}
+<h3>Gallery — {{ event.title }}</h3>
+<div class="row">
+  {% for g in gallery %}
+    <div class="col-md-3 mb-3">
+      <div class="card">
+        <img src="{{ g.image.url }}" class="card-img-top" alt="{{ g.caption }}">
+        {% if g.caption %}
+        <div class="card-body"><small>{{ g.caption }}</small></div>
+        {% endif %}
+      </div>
+    </div>
+  {% empty %}
+    <p>No gallery items yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

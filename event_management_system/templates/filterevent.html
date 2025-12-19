@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Filter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .filter-box {
+            margin-bottom: 20px;
+        }
+        select {
+            padding: 8px;
+            margin-right: 10px;
+        }
+        .event-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Filter Events</h2>
+
+<div class="filter-box">
+    <select id="typeFilter" onchange="filterEvents()">
+        <option value="all">All Types</option>
+        <option value="conference">Conference</option>
+        <option value="workshop">Workshop</option>
+        <option value="cultural">Cultural</option>
+    </select>
+
+    <select id="cityFilter" onchange="filterEvents()">
+        <option value="all">All Locations</option>
+        <option value="mumbai">Mumbai</option>
+        <option value="delhi">Delhi</option>
+        <option value="pune">Pune</option>
+    </select>
+</div>
+
+<div id="eventList">
+
+    <div class="event-card" data-type="conference" data-city="mumbai">
+        <h3>Tech Conference</h3>
+        <p>Location: Mumbai</p>
+        <p>Type: Conference</p>
+    </div>
+
+    <div class="event-card" data-type="workshop" data-city="pune">
+        <h3>Startup Workshop</h3>
+        <p>Location: Pune</p>
+        <p>Type: Workshop</p>
+    </div>
+
+    <div class="event-card" data-type="cultural" data-city="delhi">
+        <h3>Music Fest</h3>
+        <p>Location: Delhi</p>
+        <p>Type: Cultural</p>
+    </div>
+
+</div>
+
+<script>
+function filterEvents() {
+    let type = document.getElementById("typeFilter").value;
+    let city = document.getElementById("cityFilter").value;
+    let events = document.querySelectorAll(".event-card");
+
+    events.forEach(event => {
+        let eventType = event.getAttribute("data-type");
+        let eventCity = event.getAttribute("data-city");
+
+        if ((type === "all" || type === eventType) &&
+            (city === "all" || city === eventCity)) {
+            event.style.display = "block";
+        } else {
+            event.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>

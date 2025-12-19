@@ -3,12 +3,12 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render, redirect
 from .models import Event, Registration, Speaker, Gallery
-from .forms import RegistrationForm, FeedbackForm
+from .form import RegistrationForm, FeedbackForm
 import uuid
 
 def event_list(request):
     events = Event.objects.all()
-    return render(request, {'events': events})
+    return render(request,'eventlist.html', {'events': events})
 
 def register_event(request, event_id):
     event = Event.objects.get(id=event_id)
